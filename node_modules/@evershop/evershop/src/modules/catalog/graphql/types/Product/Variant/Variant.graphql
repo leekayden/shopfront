@@ -1,0 +1,34 @@
+type VariantAttribute {
+  attributeId: Int!
+  attributeCode: String!
+  attributeName: String!
+  options: [VariantAttributeOption]
+}
+
+type VariantAttributeOption {
+  optionId: Int!
+  optionText: String!
+}
+
+type VariantAttributeIndex {
+  attributeId: ID!
+  attributeCode: String!
+  optionId: Int!
+  optionText: String!
+}
+
+type Variant {
+  id: String!
+  product: Product!
+  attributes: [VariantAttributeIndex]!
+}
+
+type VariantGroup {
+  variantGroupId: Int!
+  variantAttributes: [VariantAttribute]!,
+  items: [Variant]
+}
+
+extend type Product {
+  variantGroup: VariantGroup
+}

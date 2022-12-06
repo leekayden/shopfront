@@ -1,0 +1,7 @@
+type Checkout {
+  cartId: String!
+}
+
+extend type Query {
+  checkout: Checkout!
+}
